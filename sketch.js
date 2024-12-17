@@ -3,7 +3,11 @@ const centroids = [];
 const colours = ["blue", "red", "green", "orange", "teal", "forest green", "aqua", "blueviolet", "deeppink"];
 const deviation = 20;
 const num_points = 100;
-const size = Math.min(window.screen.width, window.screen.height);
+const width  = window.innerWidth || document.documentElement.clientWidth || 
+document.body.clientWidth;
+const height = window.innerHeight|| document.documentElement.clientHeight|| 
+document.body.clientHeight;
+const size = Math.min(width, height);
 function setup() {
   resizeCanvas(size, size);
   frameRate(24);
