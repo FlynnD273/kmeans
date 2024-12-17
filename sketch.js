@@ -3,8 +3,9 @@ const centroids = [];
 const colours = ["blue", "red", "green", "orange", "teal", "forest green", "aqua", "blueviolet", "deeppink"];
 const deviation = 20;
 const num_points = 100;
+const size = Math.min(window.screen.width, window.screen.height);
 function setup() {
-  resizeCanvas(400, 400);
+  resizeCanvas(size, size);
   frameRate(24);
   rectMode(CENTER);
   init();
@@ -15,12 +16,12 @@ function init() {
   points.splice(0, points.length);
   end_count = 0;
   for (let i = 0; i < 2; i++) {
-    centroids.push([random(400), random(400)]);
+    centroids.push([random(size), random(size)]);
   }
   const group_count = random(2, colours.length);
   for (let i = 0; i < group_count; i++) {
-    const c_x = random(deviation, 400 - deviation);
-    const c_y = random(deviation, 400 - deviation);
+    const c_x = random(deviation, size - deviation);
+    const c_y = random(deviation, size - deviation);
     for (let j = 0; j < num_points; j++) {
       points.push([randomGaussian(c_x, deviation), randomGaussian(c_y, deviation)]);
     }
@@ -80,7 +81,7 @@ function draw() {
       }
     }
     else {
-      centroids[i] = [random(400), random(400)];
+      centroids[i] = [random(size), random(size)];
       is_done = false;
     }
   }
